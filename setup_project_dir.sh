@@ -15,27 +15,34 @@ if [ ! -d "$1" ]; then
     mkdir $1
 fi
 cd $1
-mkdir doc data src bin results
+mkdir doc data src bin results scratch
 
 cd doc
-echo "Doc directory with one subdirectory per manuscript" > README
-touch .gitkeep
+echo "Doc directory with one subdirectory per manuscript (if relevant)" > README.md
+# touch .gitkeep
 
 cd ../data
-echo "Data directory for storing fixed data sets" > README
-touch .gitkeep
+echo "Data directory for storing fixed data sets" > README.md
+# touch .gitkeep
+
+mkdir raw clean
+cd raw
+echo "Data directory for storing raw data" > README.md
+cd ../clean
+echo "Data directory for storing cleaned data. Different versions of cleaned data sets go into subdirectories named by date"
+cd ..
 
 cd ../src
-echo "src for source code" > README
-touch .gitkeep
+echo "src for source code" > README.md
+# touch .gitkeep
 
 cd ../bin
-echo "bin for compiled binaries or scripts" > README
-touch .gitkeep
+echo "bin for compiled binaries or scripts" > README.md
+# touch .gitkeep
 
 cd ../results
-echo "Results directory for tracking computational experiments peformed on data" > README
-touch .gitkeep
+echo "Results directory for tracking computational experiments peformed on data. Keep results from different runs in date stamped directories" > README.md
+# touch .gitkeep
 
 echo "Folders created."
 
@@ -64,6 +71,8 @@ the \`setup_project_dir.sh\` script creates the following folder structure:
     |- bin/           # any compiled binaries or scripts
     |
     |- results/       # output for tracking computational experiments performed on data
+    |
+    |- scratch/       # scratch are for tmp files that can be deleted anytime
 
 A README containing a brief blurb is placed in each folder.
 This is because git will not track empty folders and placing a README will
