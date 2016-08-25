@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# adding a comment
+
 # don't overwrite files.
 set -o noclobber
 
